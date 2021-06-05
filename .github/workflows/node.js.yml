@@ -44,7 +44,7 @@ jobs:
       - name: Upload build folder as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: build
+          name: assets
           path: build
 
       # - name: Check dir
@@ -69,4 +69,5 @@ jobs:
       # This action adds all build files directly into repo folder and mergining source files with build files, messy setup
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          add: 'build'
           commit_message: Build complete
