@@ -25,8 +25,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Run Tests
+      - name: Current dir
         run: pwd
+
+      - name: Check dir
+        run: ls
+
+      - name: Create dir
+        run: mkdir build
+
+      - name: Check dir
+        run: ls
 
       # - run: npm install
 
