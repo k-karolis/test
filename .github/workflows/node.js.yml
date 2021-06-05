@@ -85,5 +85,5 @@ jobs:
       - uses: EndBug/add-and-commit@v7
         with:
           message: 'Add the very useful text file'
-          add: '*.txt --force'
+          add: './build/*.txt --force'
           cwd: './build/'
