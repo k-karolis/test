@@ -41,12 +41,19 @@ jobs:
 
       - run: npm run build
 
-      # This action will upload build folder as Artifact, which is downloadable and I believe accessable via API
-      - name: Upload build folder as artifact
-        uses: actions/upload-artifact@v2
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          name: assets
-          path: './build/'
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
+
+
+      # This action will upload build folder as Artifact, which is downloadable and I believe accessable via API
+      # - name: Upload build folder as artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: assets
+      #     path: ./build/
 
       # - name: Check dir
       #   run: ls -R
@@ -74,16 +81,16 @@ jobs:
       #     commit_message: Build complete
 
       # If you need to, you can check out your repo to a different location
-      - uses: actions/checkout@v2
-        with:
-          path: './k-karolis/test/'
+      # - uses: actions/checkout@v2
+      #   with:
+      #     path: './k-karolis/test/'
 
-      # You can make whatever type of change to the repo...
-      - run: echo "123" > ./build/filessss.txt
+      # # You can make whatever type of change to the repo...
+      # - run: echo "123" > ./build/filessss.txt
 
-      # ...and then use the action as you would normally do, but providing the path to the repo
-      - uses: EndBug/add-and-commit@v7
-        with:
-          message: 'Add the very useful text file'
-          add: '*.txt --force'
-          cwd: './k-karolis/test/'
+      # # ...and then use the action as you would normally do, but providing the path to the repo
+      # - uses: EndBug/add-and-commit@v7
+      #   with:
+      #     message: 'Add the very useful text file'
+      #     add: '*.txt --force'
+      #     cwd: './k-karolis/test/'
