@@ -21,7 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: './build/'
           ref: ${{ github.head_ref }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -31,8 +30,8 @@ jobs:
       - name: Current dir
         run: pwd
 
-      # - name: Create dir
-      #   run: mkdir build && cwd build
+      - name: Create dir
+        run: mkdir build && cwd build
 
       - name: Check dir
         run: ls -R
@@ -74,8 +73,10 @@ jobs:
       #     add: 'build'
       #     commit_message: Build complete
 
-      - name: Current dir
-        run: pwd
+      # If you need to, you can check out your repo to a different location
+      - uses: actions/checkout@v2
+        with:
+          path: './build/'
 
       # You can make whatever type of change to the repo...
       - run: echo "123" > ./build/file.txt
