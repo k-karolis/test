@@ -31,8 +31,8 @@ jobs:
       - name: Create dir
         run: mkdir B && touch B/myfile.txt
 
-      # - name: Check dir
-      #   run: ls -R
+      - name: Check dir
+        run: ls -R
 
       # - name: Create dir
       #   run: mkdir build
