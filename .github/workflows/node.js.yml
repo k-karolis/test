@@ -66,17 +66,16 @@ jobs:
       # FOLDER: public/site
       #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          repository: ./build
-          commit_message: Build complete
-
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
+      # - uses: stefanzweifel/git-auto-commit-action@v4
       #   with:
-      #     directory: build
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: ${{ github.ref }}
+      #     commit_message: Build complete
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          directory: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
       - name: Check dir
         run: ls -R
