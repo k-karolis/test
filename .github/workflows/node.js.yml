@@ -27,70 +27,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Current dir
-        run: pwd && echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Create dir
-        run: mkdir build && touch build/READMEinsideBUILDxxxxx.md && cd build
-
-      - name: Check dir
-        run: ls -R
-
       - run: npm ci
-      # - run: npm install
 
       - run: npm run build
 
-      - name: Deploy 🚀
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: build # The branch the action should deploy to.
           folder: build # The folder the action should deploy
 
-
-      # This action will upload build folder as Artifact, which is downloadable and I believe accessable via API
-      # - name: Upload build folder as artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: assets
-      #     path: ./build/
-
-      # - name: Check dir
-      #   run: ls -R
-
-      # - uses: actions/download-artifact@v2
-      #   with:
-      #     name: build
-
-      # - name: Check dir
-      #   run: ls -R
-
-      # Action below does overwrite current repo with new files, use with caution
-      #       - name: Deploy
-      #         uses: s0/git-publish-subdir-action@develop
-      #         env:
-      #           REPO: self
-      #           BRANCH: main
-      # FOLDER: public/site
-      #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # This action adds all build files directly into repo folder and mergining source files with build files, messy setup
-      # - uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     add: 'build'
-      #     commit_message: Build complete
-
-      # If you need to, you can check out your repo to a different location
-      # - uses: actions/checkout@v2
-      #   with:
-      #     path: './k-karolis/test/'
-
-      # # You can make whatever type of change to the repo...
-      # - run: echo "123" > ./build/filessss.txt
-
-      # # ...and then use the action as you would normally do, but providing the path to the repo
-      # - uses: EndBug/add-and-commit@v7
-      #   with:
-      #     message: 'Add the very useful text file'
-      #     add: '*.txt --force'
-      #     cwd: './k-karolis/test/'
