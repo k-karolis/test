@@ -31,8 +31,7 @@ jobs:
         run: pwd
 
       - name: Create dir
-        run: mkdir build && touch build/READMEinsideBUILDxxxxx.md
-        cwd: './build/'
+        run: mkdir build && touch build/READMEinsideBUILDxxxxx.md && cd build
 
       - name: Check dir
         run: ls -R
