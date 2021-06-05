@@ -29,40 +29,31 @@ jobs:
         run: pwd
 
       - name: Create dir
-        run: mkdir build && touch build/README.txt
+        run: mkdir build && touch build/README.md
 
       - name: Check dir
         run: ls -R
 
-      - name: Print workspace path
-        run: echo $GITHUB_WORKSPACE && pwd && echo ${{github.ref}}
+      - run: npm install
 
-      # - name: Create dir
-      #   run: mkdir build
+      - run: npm run build
 
-      # - name: Check dir
-      #   run: ls -R
+      - name: Upload build folder as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: |
+            build
 
-      # - run: npm install
+      - name: Check dir
+        run: ls -R
 
-      # - run: npm run build
-      # - name: Upload build folder as artifact
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
 
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: build
-      #     path: |
-      #       build
-
-      # - name: Check dir
-      #   run: ls -R
-
-      # - uses: actions/download-artifact@v2
-      #   with:
-      #     name: build
-
-      # - name: Check dir
-      #   run: ls -R
+      - name: Check dir
+        run: ls -R
 
       #       - name: Deploy
       #         uses: s0/git-publish-subdir-action@develop
@@ -76,12 +67,11 @@ jobs:
       #   with:
       #     commit_message: Build complete
 
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     directory: build
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: ${{ github.ref }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
       # - name: Check dir
       #   run: ls -R
