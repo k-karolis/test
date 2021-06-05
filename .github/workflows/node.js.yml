@@ -29,7 +29,7 @@ jobs:
         run: pwd
 
       - name: Create dir
-        run: mkdir B && touch build/README.md
+        run: mkdir B && touch build/README.txt
 
       - name: Check dir
         run: ls -R
