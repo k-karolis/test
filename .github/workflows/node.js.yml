@@ -76,7 +76,7 @@ jobs:
       # If you need to, you can check out your repo to a different location
       - uses: actions/checkout@v2
         with:
-          path: './build/'
+          path: './home/runner/work/test/test'
 
       # You can make whatever type of change to the repo...
       - run: echo "123" > ./build/file.txt
@@ -86,4 +86,4 @@ jobs:
         with:
           message: 'Add the very useful text file'
           add: '*.txt --force'
-          cwd: './build/'
+          cwd: './home/runner/work/test/test'
