@@ -28,35 +28,38 @@ jobs:
       - name: Current dir
         run: pwd
 
-      - name: Check dir
-        run: ls
-
       - name: Create dir
-        run: mkdir build
+        run: git add build/foo.txt
 
-      - name: Check dir
-        run: ls -R
+      # - name: Check dir
+      #   run: ls -R
 
-      - run: npm install
+      # - name: Create dir
+      #   run: mkdir build
 
-      - run: npm run build
-      - name: Upload build folder as artifact
+      # - name: Check dir
+      #   run: ls -R
 
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: |
-            build
+      # - run: npm install
 
-      - name: Check dir
-        run: ls -R
+      # - run: npm run build
+      # - name: Upload build folder as artifact
 
-      - uses: actions/download-artifact@v2
-        with:
-          name: build
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: build
+      #     path: |
+      #       build
 
-      - name: Check dir
-        run: ls -R
+      # - name: Check dir
+      #   run: ls -R
+
+      # - uses: actions/download-artifact@v2
+      #   with:
+      #     name: build
+
+      # - name: Check dir
+      #   run: ls -R
 
       #       - name: Deploy
       #         uses: s0/git-publish-subdir-action@develop
@@ -70,12 +73,12 @@ jobs:
       #   with:
       #     commit_message: Build complete
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          directory: build
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     directory: build
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
 
-      - name: Check dir
-        run: ls -R
+      # - name: Check dir
+      #   run: ls -R
