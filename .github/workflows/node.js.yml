@@ -36,7 +36,8 @@ jobs:
       - name: Check dir
         run: ls -R
 
-      - run: npm install
+      - run: npm ci
+      # - run: npm install
 
       - run: npm run build
 
@@ -67,7 +68,22 @@ jobs:
       #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # This action adds all build files directly into repo folder and mergining source files with build files, messy setup
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      # - uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     add: 'build'
+      #     commit_message: Build complete
+
+      # If you need to, you can check out your repo to a different location
+      - uses: actions/checkout@v2
         with:
-          add: 'build'
-          commit_message: Build complete
+          path: './build/'
+
+      # You can make whatever type of change to the repo...
+      - run: echo "123" > ./build/file.txt
+
+      # ...and then use the action as you would normally do, but providing the path to the repo
+      - uses: EndBug/add-and-commit@v7
+        with:
+          message: 'Add the very useful text file'
+          add: '*.txt --force'
+          cwd: './build/'
