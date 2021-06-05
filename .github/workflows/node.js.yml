@@ -37,7 +37,7 @@ jobs:
       - name: Check dir
         run: ls -R
 
-      # - run: npm install
+      - run: npm install
 
       - run: npm run build
       - name: Upload build folder as artifact
