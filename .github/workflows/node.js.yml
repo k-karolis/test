@@ -20,8 +20,8 @@ jobs:
 
     steps:
         uses: actions/checkout@v2
-        - name: Run Tests
-          working-directory: ./build
+      - name: Run Tests
+        working-directory: ./build
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
