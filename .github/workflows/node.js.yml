@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Current dir
-        run: pwd
+        run: pwd && echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Create dir
         run: mkdir build && touch build/READMEinsideBUILDxxxxx.md && cd build
@@ -85,5 +85,5 @@ jobs:
       - uses: EndBug/add-and-commit@v7
         with:
           message: 'Add the very useful text file'
-          add: './build/*.txt --force'
+          add: '*.txt --force'
           cwd: './build/'
