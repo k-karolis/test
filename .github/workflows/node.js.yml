@@ -36,8 +36,8 @@ jobs:
         with:
           name: build
           path: |
-          build
-
+            build
+  
       - name: Deploy build folder to build branch
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
