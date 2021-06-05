@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: assets
-          # path: './build/'
+          path: './build/'
 
       - name: Deploy build folder to build branch
         uses: JamesIves/github-pages-deploy-action@4.1.4
