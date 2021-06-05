@@ -35,8 +35,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build
+<<<<<<< HEAD
           path: ${{ github.workspace }}/artifact/**/*
 
+=======
+          path: |
+            build
+  
+>>>>>>> b426e82c875c871985b0e9e6f793723129ef294d
       - name: Deploy build folder to build branch
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
