@@ -63,7 +63,7 @@ jobs:
       #         env:
       #           REPO: self
       #           BRANCH: main
-      #           FOLDER: public/site
+      # FOLDER: public/site
       #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
