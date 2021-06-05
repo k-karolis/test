@@ -27,21 +27,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Faster node module install in GitHub Actions environment
       - run: npm ci
 
-      # Run build script
-      - run: npm run build
+      - run: npm run
 
-      # This action will upload build folder as Artifact, which is downloadable and I believe accessable via API
-      uses: actions/upload-artifact@v2
+      - name: Upload build folder as artifact
+        uses: actions/upload-artifact@v2
         with:
           name: assets
           path: ./build/
 
-      # Deploy to build directory to build branch
-      uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Deploy build folder to build branch
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: build # The branch the action should deploy to.
           folder: build # The folder the action should deploy
-
