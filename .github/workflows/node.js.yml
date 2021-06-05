@@ -68,4 +68,5 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          repository: '/build'
           commit_message: Build complete
