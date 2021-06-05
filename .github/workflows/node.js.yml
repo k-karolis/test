@@ -31,16 +31,7 @@ jobs:
         run: pwd
 
       - name: Create dir
-        run: mkdir build 
-        cd build
-        touch build/README.md
-        cd..
-
-      - name: Change dir
-        run: |
-        cd build
-        touch build/README.md
-        cd..
+        run: mkdir build && touch build/README.md && cd build && cd..
 
       - name: Check dir
         run: ls -R
