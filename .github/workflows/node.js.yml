@@ -50,13 +50,13 @@ jobs:
 
       - name: Check dir
         run: ls -R
-      #       - uses: actions/checkout@v2
-      #       - uses: actions/download-artifact@v2
-      #         with:
-      #           name: build
 
-      #       - name: Display structure of downloaded files
-      #         run: ls -R
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+
+      - name: Display structure of downloaded files
+        run: ls -R
 
       #       - name: Deploy
       #         uses: s0/git-publish-subdir-action@develop
@@ -68,5 +68,8 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          repository: './build'
+          repository: '/build'
           commit_message: Build complete
+
+      - name: Check dir
+        run: ls -R
