@@ -44,8 +44,8 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          branch: main # The branch the action should deploy to.
-          folder: .build # The folder the action should deploy.
+          branch: build # The branch the action should deploy to.
+          folder: build # The folder the action should deploy
 
 
       # This action will upload build folder as Artifact, which is downloadable and I believe accessable via API
